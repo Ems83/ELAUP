@@ -61,16 +61,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const nome = document.getElementById('nome').value;
     const mensagem = document.getElementById('mensagem').value;
 
-    fetch(airtableUrl, {
+   fetch('https://ela-up-backend.onrender.com/historia', {
       method: "POST",
-      headers: headers,
-      body: JSON.stringify({
-        fields: {
-          Nome: nome,
-          História: mensagem
-        }
-      })
+      headers: {
+         "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ nome, mensagem })
     })
+
     .then(res => res.json())
     .then(data => {
       alert("História enviada com sucesso!");
