@@ -37,11 +37,8 @@ const swiper = new Swiper('.swiper', {
   },
 });
 
-// ✍️ Envio de história via Airtable
-document.addEventListener('DOMContentLoaded', function() {
-
   const airtableBase = "appOYuxq91Okzr6CP";
-  const airtableTable = "Table%201"; // Se o nome for diferente, mude aqui
+  const airtableTable = encodeURIComponent("Table 1"); // fica "Table%201"
   const airtableToken = "patI0u3B11vWE1jUG";
 
   const airtableUrl = `https://api.airtable.com/v0/${airtableBase}/${airtableTable}`;
@@ -61,27 +58,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const nome = document.getElementById('nome').value;
     const mensagem = document.getElementById('mensagem').value;
 
-    fetch(airtableUrl, {
-      method: "POST",
-      headers: headers,
-      body: JSON.stringify({
-        fields: {
-          Nome: nome,
-          História: mensagem
-        }
-      })
-    })
-    .then(res => res.json())
-    .then(data => {
-      alert("História enviada com sucesso!");
-      form.reset();
-      adicionarHistoriaNaTela({ fields: { Nome: nome, História: mensagem }, createdTime: new Date().toISOString() });
-    })
-    .catch(err => {
-      console.error("Erro ao enviar:", err);
-      alert("Erro ao enviar. Tente novamente.");
-    });
+   fetch('http://localhost:3000/historias', {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    Nome: nome,
+    História: mensagem
+  })
+})
+.then(res => res.json())
+.then(data => {
+  alert("História enviada com sucesso!");
+  form.reset();
+  adicionarHistoriaNaTela({
+    fields: { Nome: nome, História: mensagem },
+    createdTime: new Date().toISOString()
   });
+})
+.catch(err => {
+  console.error("Erro ao enviar:", err);
+  alert("Erro ao enviar. Tente novamente.");
+});
+
 
   // Função para listar as histórias
   function carregarHistorias() {
