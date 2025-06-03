@@ -323,6 +323,36 @@ footer a {
     display: block;
     border-radius: 10px;
 }
+#lojas-parceiras {
+  padding: 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+#lojas-parceiras h2 {
+  margin-bottom: 10px;
+}
+
+.banners-lojas {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.banner-loja img {
+  height: 30px; /* altura fixa */
+  width: auto; /* mantém proporção da imagem */
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.banner-loja img:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 5px rgba(0,0,0,0.3));
+}
+
 
 #blog form {
     max-width: 600px;
@@ -341,57 +371,10 @@ footer a {
     border-radius: 4px;
 }
 
-/* Estilo aprimorado para a seção de histórias */
-#lista-historias .post {
-  background: #fff7f0;
-  padding: 20px;
-  margin-top: 20px;
-  border-left: 5px solid #f09307;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
 
-#lista-historias .post h3 {
-  margin-bottom: 10px;
-  color: #f09307;
-}
 
-#lista-historias .post p {
-  margin-bottom: 10px;
-}
 
-#lista-historias .post small {
-  color: #777;
-}
 
-#form-historia {
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 20px;
-  border: 2px solid #f09307;
-  background: #fffaf5;
-  border-radius: 8px;
-}
 
-#form-historia input, #form-historia textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  border: 1px solid #f09307;
-  border-radius: 4px;
-}
 
-#form-historia .btn {
-  background: #f09307;
-  color: #fff;
-  border: none;
-  margin-top: 10px;
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-#form-historia .btn:hover {
-  background: #d87c04;
-}
 
